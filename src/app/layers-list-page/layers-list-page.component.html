@@ -1,0 +1,8 @@
+
+<mat-grid-list cols="4" rowHeight="100px">
+  <mat-grid-tile
+      *ngFor="let layer of additionalLayers"
+      dir="rtl">
+      <mat-checkbox (change)="onCheckChange($event, layer)">{{layer.caption}}</mat-checkbox>
+  </mat-grid-tile>
+</mat-grid-list>

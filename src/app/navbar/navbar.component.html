@@ -1,0 +1,22 @@
+<mat-toolbar color="primary" dir="rtl">
+  <mat-icon class="spacer" routerLink="/">home</mat-icon>
+  <span class="spacer"></span>
+  <mat-form-field appearance="fill">
+    <mat-label>שכבות</mat-label>
+    <mat-select [formControl]="layers" multiple (selectionChange)="selectedLayersChange()" class="dropdown">
+      <mat-select-trigger>
+        {{layers.value ? layers.value[0] : ''}}
+        <span *ngIf="layers.value?.length > 1">
+          (+{{layers.value.length - 1}} {{layers.value?.length === 2 ? 'other' : 'others'}})
+        </span>
+      </mat-select-trigger>
+      <mat-option *ngFor="let layer of layersList" [value]="layer">
+        {{layer.caption}}
+        <span>
+          <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon" (click)="removeLayer(layer)">delete</mat-icon>
+        </span>
+      </mat-option>
+      <button mat-raised-button color="primary" routerLink='/additionalLayers'>עוד שכבות</button>
+    </mat-select>
+  </mat-form-field>
+</mat-toolbar>
